@@ -29,7 +29,9 @@ namespace DotNetCoreRazor_MSGraph.Pages
 
         public async Task OnGetAsync()
         {
-            // Remove this code
+            var messagesPagingData = await _graphEmailClient.GetUserMessagesPage(NextLink);
+            Messages = messagesPagingData.Messages;
+            NextLink = messagesPagingData.NextLink;
             await Task.CompletedTask;
         }
     }
